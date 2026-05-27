@@ -1,0 +1,580 @@
+/* ============================================
+   工业数据主义 (Industrial Dataism) 全局样式
+   ============================================ */
+
+/* 导入字体 */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* CSS变量 */
+:root {
+  /* 主色调 */
+  --color-primary: #00d4ff;
+  --color-primary-dim: rgba(0, 212, 255, 0.15);
+  --color-primary-glow: rgba(0, 212, 255, 0.4);
+  
+  /* 辅助色 */
+  --color-accent-orange: #ff8c00;
+  --color-accent-green: #00ff88;
+  --color-accent-red: #ff4757;
+  --color-accent-purple: #a855f7;
+  
+  /* 背景色 */
+  --color-bg-deep: #060a10;
+  --color-bg-base: #0a0e14;
+  --color-bg-card: #111827;
+  --color-bg-elevated: #1a2332;
+  --color-bg-hover: rgba(0, 212, 255, 0.05);
+  
+  /* 边框色 */
+  --color-border: #1e3a5f;
+  --color-border-dim: #162b44;
+  --color-border-glow: rgba(0, 212, 255, 0.3);
+  
+  /* 文字色 */
+  --color-text-primary: #e6edf3;
+  --color-text-secondary: #8b949e;
+  --color-text-muted: #6e7681;
+  
+  /* 网格纹理 */
+  --grid-pattern: 
+    linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+  --grid-size: 24px;
+}
+
+/* 全局重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* 选择文本颜色 */
+::selection {
+  background: var(--color-primary-dim);
+  color: var(--color-primary);
+}
+
+/* 身体样式 */
+body {
+  font-family: 'Inter', 'JetBrains Mono', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--color-bg-base);
+  color: var(--color-text-primary);
+  overflow: hidden;
+}
+
+/* ============================================
+   动画关键帧
+   ============================================ */
+
+/* 淡入动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 滑入动画 */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 脉冲发光效果 */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 5px var(--color-primary-glow);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--color-primary-glow);
+  }
+}
+
+/* 数据流动效果 */
+@keyframes dataFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 扫描线效果 */
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* 闪烁效果 */
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* 旋转加载 */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   通用组件样式增强
+   ============================================ */
+
+/* 卡片悬停效果 */
+.ant-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--color-border-dim) !important;
+  background: var(--color-bg-card) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.ant-card:hover {
+  border-color: var(--color-border-glow) !important;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* 卡片顶部发光条 */
+.ant-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.ant-card:hover::before {
+  opacity: 1;
+}
+
+/* 表格样式增强 */
+.ant-table {
+  background: transparent !important;
+}
+
+.ant-table-thead > tr > th {
+  background: var(--color-bg-elevated) !important;
+  border-bottom: 1px solid var(--color-border) !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-text-secondary) !important;
+}
+
+.ant-table-tbody > tr > td {
+  border-bottom: 1px solid var(--color-border-dim) !important;
+  transition: background 0.2s;
+}
+
+.ant-table-tbody > tr:hover > td {
+  background: var(--color-bg-hover) !important;
+}
+
+/* 按钮样式增强 */
+.ant-btn-primary {
+  background: linear-gradient(135deg, var(--color-primary), #0099cc) !important;
+  border: none !important;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ant-btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.ant-btn-primary:hover::after {
+  left: 100%;
+}
+
+/* 标签样式增强 */
+.ant-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  border: 1px solid;
+  padding: 2px 8px;
+}
+
+/* 菜单样式增强 */
+.ant-menu-item {
+  position: relative;
+  transition: all 0.3s;
+}
+
+.ant-menu-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 0;
+  background: var(--color-primary);
+  transition: height 0.3s;
+  border-radius: 0 2px 2px 0;
+}
+
+.ant-menu-item-selected::before {
+  height: 60%;
+}
+
+/* 输入框样式 */
+.ant-input,
+.ant-input-affix-wrapper,
+.ant-select-selector {
+  background: var(--color-bg-deep) !important;
+  border-color: var(--color-border-dim) !important;
+  transition: all 0.3s;
+}
+
+.ant-input:focus,
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-focused,
+.ant-select-focused .ant-select-selector {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 2px var(--color-primary-dim) !important;
+}
+
+/* 抽屉样式 */
+.ant-drawer-content {
+  background: var(--color-bg-card) !important;
+}
+
+/* 描述列表样式 */
+.ant-descriptions-item-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--color-text-secondary) !important;
+  background: var(--color-bg-elevated) !important;
+}
+
+/* ============================================
+   自定义工具类
+   ============================================ */
+
+/* 网格背景 */
+.grid-bg {
+  background-image: var(--grid-pattern);
+  background-size: var(--grid-size) var(--grid-size);
+}
+
+/* 发光文字 */
+.text-glow {
+  text-shadow: 0 0 10px var(--color-primary-glow);
+}
+
+/* 发光边框 */
+.border-glow {
+  border: 1px solid var(--color-border-glow);
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.1);
+}
+
+/* 渐变文字 */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent-green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 数据流动背景 */
+.data-flow-bg {
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-card),
+    var(--color-bg-elevated),
+    var(--color-bg-card)
+  );
+  background-size: 200% 100%;
+  animation: dataFlow 3s ease infinite;
+}
+
+/* 扫描线叠加层 */
+.scanline-overlay {
+  position: relative;
+}
+
+.scanline-overlay::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 212, 255, 0.03) 2px,
+    rgba(0, 212, 255, 0.03) 4px
+  );
+  pointer-events: none;
+}
+
+/* 状态指示器 */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-dot.online {
+  background: var(--color-accent-green);
+  box-shadow: 0 0 8px var(--color-accent-green);
+}
+
+.status-dot.offline {
+  background: var(--color-accent-red);
+  box-shadow: 0 0 8px var(--color-accent-red);
+}
+
+.status-dot.warning {
+  background: var(--color-accent-orange);
+  box-shadow: 0 0 8px var(--color-accent-orange);
+  animation: blink 2s infinite;
+}
+
+/* 数字显示 */
+.mono-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+/* ============================================
+   页面过渡动画
+   ============================================ */
+
+.page-enter {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* 统计卡片 */
+.stat-card {
+  position: relative;
+  padding: 16px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-dim);
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.stat-card:hover {
+  border-color: var(--color-border-glow);
+  transform: translateY(-2px);
+}
+
+.stat-card .stat-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.stat-card .stat-label {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+/* 风险等级颜色 */
+.risk-high {
+  color: var(--color-accent-red);
+  border-color: var(--color-accent-red);
+  background: rgba(255, 71, 87, 0.1);
+}
+
+.risk-medium {
+  color: var(--color-accent-orange);
+  border-color: var(--color-accent-orange);
+  background: rgba(255, 140, 0, 0.1);
+}
+
+.risk-low {
+  color: var(--color-accent-green);
+  border-color: var(--color-accent-green);
+  background: rgba(0, 255, 136, 0.1);
+}
+
+/* ============================================
+   响应式调整
+   ============================================ */
+
+@media (max-width: 768px) {
+  .ant-layout-sider {
+    display: none;
+  }
+}
+
+/* ============================================
+   统计卡片悬停效果
+   ============================================ */
+.stat-card-hover:hover {
+  border-color: rgba(0, 212, 255, 0.3) !important;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.domain-card-hover:hover {
+  border-color: rgba(0, 212, 255, 0.3) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  background: #1a2332 !important;
+}
+
+/* 表格行悬停效果 */
+.ant-table-tbody > tr {
+  transition: all 0.2s;
+}
+
+.ant-table-tbody > tr:hover > td {
+  background: rgba(0, 212, 255, 0.05) !important;
+}
+
+/* 菜单项动画 */
+.ant-menu-item {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ant-menu-item:hover {
+  background: rgba(0, 212, 255, 0.05) !important;
+}
+
+/* 标签悬停效果 */
+.ant-tag {
+  transition: all 0.2s;
+}
+
+.ant-tag:hover {
+  transform: scale(1.05);
+}
+
+/* 按钮悬停效果 */
+.ant-btn {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ant-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* 卡片内容淡入 */
+.ant-card-body {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* 进度条美化 */
+.ant-progress-bg {
+  background: linear-gradient(90deg, #00d4ff, #00ff88) !important;
+}
+
+/* 抽屉动画 */
+.ant-drawer-content {
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* 加载动画 */
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #1e3a5f;
+  border-top: 3px solid #00d4ff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* 数据脉冲效果 */
+.data-pulse {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* 扫描线效果 */
+.scanline-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanline-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+  animation: scanline 3s linear infinite;
+}

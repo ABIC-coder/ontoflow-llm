@@ -58,7 +58,7 @@ const GraphView: React.FC = () => {
         getEntityNeighbors(nodeId),
       ]);
       setSelectedNode(entityRes);
-      setNeighbors(neighborsRes || []);
+      setNeighbors(neighborsRes?.nodes || []);
     } catch {
       setSelectedNode(null);
       setNeighbors([]);

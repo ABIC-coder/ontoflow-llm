@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     data_dir: Path = base_dir / "data"
     equipment_db: Path = data_dir / "equipment_demo.db"
     platform_db: Path = data_dir / "platform.db"
-    ontology_seed_path: Path = base_dir / "app" / "seed" / "sample_ontology.json"
+    ontology_seed_path: Path = base_dir / "app" / "seed" / "ontology_v2.json"
 
     class Config:
         env_file = ".env"

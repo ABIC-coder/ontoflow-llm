@@ -3,10 +3,124 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mini OntoFlow - 本体增强智能平台</title>
+    <meta name="description" content="OntoFlow - 设备全生命周期管理平台" />
+    <meta name="theme-color" content="#0a0e14" />
+    <title>OntoFlow - 设备全生命周期管理平台</title>
+    
+    <!-- 预加载字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <style>
+      /* 初始加载样式 */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        background: #0a0e14;
+        color: #e6edf3;
+        font-family: 'Inter', sans-serif;
+        overflow: hidden;
+      }
+      
+      #root {
+        min-height: 100vh;
+      }
+      
+      /* 初始加载动画 */
+      .initial-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: #0a0e14;
+        z-index: 9999;
+      }
+      
+      .loader-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 32px;
+      }
+      
+      .loader-icon {
+        width: 48px;
+        height: 48px;
+        border: 2px solid #1e3a5f;
+        border-top: 2px solid #00d4ff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      .loader-text {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 24px;
+        font-weight: 600;
+        color: #e6edf3;
+        letter-spacing: 2px;
+      }
+      
+      .loader-subtitle {
+        font-size: 12px;
+        color: #6e7681;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        margin-top: 8px;
+      }
+      
+      .loader-bar {
+        width: 200px;
+        height: 2px;
+        background: #1e3a5f;
+        border-radius: 1px;
+        overflow: hidden;
+        margin-top: 24px;
+      }
+      
+      .loader-bar-inner {
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+        animation: loading 1.5s ease-in-out infinite;
+      }
+      
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      
+      @keyframes loading {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(300%); }
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- 初始加载动画 -->
+      <div class="initial-loader">
+        <div class="loader-logo">
+          <div class="loader-icon"></div>
+          <div>
+            <div class="loader-text">ONTOFLOW</div>
+            <div class="loader-subtitle">Data Intelligence Platform</div>
+          </div>
+        </div>
+        <div class="loader-bar">
+          <div class="loader-bar-inner"></div>
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

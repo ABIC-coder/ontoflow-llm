@@ -1,0 +1,339 @@
+{
+  "name": "equipment_lifecycle_ontology_v2",
+  "version": "2.0",
+  "description": "设备全生命周期管理本体 - 覆盖采购、试验鉴定、维修保障三大领域",
+  "entities": [
+    {
+      "type": "Equipment",
+      "label": "设备",
+      "source_table": "equipment",
+      "label_expr": "name",
+      "properties": ["id", "name", "model", "category", "status", "importance_level", "purchase_date", "commission_date", "expected_life_years"],
+      "property_mappings": {
+        "id": "id", "name": "name", "model": "model", "category": "category",
+        "status": "status", "importance_level": "importance_level",
+        "purchase_date": "purchase_date", "commission_date": "commission_date",
+        "expected_life_years": "expected_life_years"
+      }
+    },
+    {
+      "type": "Manufacturer",
+      "label": "生产厂家",
+      "source_table": "manufacturer",
+      "label_expr": "name",
+      "properties": ["id", "name", "qualification_level", "contact", "address", "established_year"],
+      "property_mappings": {
+        "id": "id", "name": "name", "qualification_level": "qualification_level",
+        "contact": "contact", "address": "address", "established_year": "established_year"
+      }
+    },
+    {
+      "type": "Supplier",
+      "label": "供应商",
+      "source_table": "supplier",
+      "label_expr": "name",
+      "properties": ["id", "name", "credit_level", "risk_level", "contact", "address"],
+      "property_mappings": {
+        "id": "id", "name": "name", "credit_level": "credit_level",
+        "risk_level": "risk_level", "contact": "contact", "address": "address"
+      }
+    },
+    {
+      "type": "Location",
+      "label": "部署位置",
+      "source_table": "location",
+      "label_expr": "name",
+      "properties": ["id", "name", "type", "parent_id"],
+      "property_mappings": {
+        "id": "id", "name": "name", "type": "type", "parent_id": "parent_id"
+      }
+    },
+    {
+      "type": "ProcurementPlan",
+      "label": "采购计划",
+      "source_table": "procurement_plan",
+      "label_expr": "plan_name",
+      "properties": ["id", "plan_name", "plan_year", "budget_amount", "status", "approved_date"],
+      "property_mappings": {
+        "id": "id", "plan_name": "plan_name", "plan_year": "plan_year",
+        "budget_amount": "budget_amount", "status": "status", "approved_date": "approved_date"
+      }
+    },
+    {
+      "type": "TenderProject",
+      "label": "招标项目",
+      "source_table": "tender_project",
+      "label_expr": "project_name",
+      "properties": ["id", "project_name", "tender_method", "publish_date", "bid_deadline", "status"],
+      "property_mappings": {
+        "id": "id", "project_name": "project_name", "tender_method": "tender_method",
+        "publish_date": "publish_date", "bid_deadline": "bid_deadline", "status": "status"
+      }
+    },
+    {
+      "type": "PurchaseContract",
+      "label": "采购合同",
+      "source_table": "purchase_contract",
+      "label_expr": "contract_no",
+      "properties": ["id", "contract_no", "amount", "sign_date", "delivery_date", "status", "payment_terms"],
+      "property_mappings": {
+        "id": "id", "contract_no": "contract_no", "amount": "amount",
+        "sign_date": "sign_date", "delivery_date": "delivery_date",
+        "status": "status", "payment_terms": "payment_terms"
+      }
+    },
+    {
+      "type": "AcceptanceRecord",
+      "label": "验收记录",
+      "source_table": "acceptance_record",
+      "label_expr": "acceptance_no",
+      "properties": ["id", "acceptance_no", "acceptance_date", "result", "inspector", "remarks"],
+      "property_mappings": {
+        "id": "id", "acceptance_no": "acceptance_no", "acceptance_date": "acceptance_date",
+        "result": "result", "inspector": "inspector", "remarks": "remarks"
+      }
+    },
+    {
+      "type": "TestProject",
+      "label": "试验项目",
+      "source_table": "test_project",
+      "label_expr": "project_name",
+      "properties": ["id", "project_name", "test_type", "start_date", "end_date", "status", "conclusion"],
+      "property_mappings": {
+        "id": "id", "project_name": "project_name", "test_type": "test_type",
+        "start_date": "start_date", "end_date": "end_date",
+        "status": "status", "conclusion": "conclusion"
+      }
+    },
+    {
+      "type": "TestPlan",
+      "label": "试验方案",
+      "source_table": "test_plan",
+      "label_expr": "plan_name",
+      "properties": ["id", "plan_name", "test_conditions", "test_items", "acceptance_criteria"],
+      "property_mappings": {
+        "id": "id", "plan_name": "plan_name", "test_conditions": "test_conditions",
+        "test_items": "test_items", "acceptance_criteria": "acceptance_criteria"
+      }
+    },
+    {
+      "type": "TestData",
+      "label": "试验数据",
+      "source_table": "test_data",
+      "label_expr": "test_item",
+      "properties": ["id", "test_item", "measured_value", "expected_value", "unit", "pass_flag", "test_time"],
+      "property_mappings": {
+        "id": "id", "test_item": "test_item", "measured_value": "measured_value",
+        "expected_value": "expected_value", "unit": "unit",
+        "pass_flag": "pass_flag", "test_time": "test_time"
+      }
+    },
+    {
+      "type": "AppraisalConclusion",
+      "label": "鉴定结论",
+      "source_table": "appraisal_conclusion",
+      "label_expr": "conclusion_no",
+      "properties": ["id", "conclusion_no", "appraisal_date", "result", "experts", "remarks"],
+      "property_mappings": {
+        "id": "id", "conclusion_no": "conclusion_no", "appraisal_date": "appraisal_date",
+        "result": "result", "experts": "experts", "remarks": "remarks"
+      }
+    },
+    {
+      "type": "MaintenancePlan",
+      "label": "维修计划",
+      "source_table": "maintenance_plan",
+      "label_expr": "plan_name",
+      "properties": ["id", "plan_name", "plan_type", "planned_date", "status"],
+      "property_mappings": {
+        "id": "id", "plan_name": "plan_name", "plan_type": "plan_type",
+        "planned_date": "planned_date", "status": "status"
+      }
+    },
+    {
+      "type": "MaintenanceOrder",
+      "label": "维修工单",
+      "source_table": "maintenance_order",
+      "label_expr": "order_no",
+      "properties": ["id", "order_no", "fault_desc", "repair_action", "start_time", "end_time", "operator", "status", "severity"],
+      "property_mappings": {
+        "id": "id", "order_no": "order_no", "fault_desc": "fault_desc",
+        "repair_action": "repair_action", "start_time": "start_time",
+        "end_time": "end_time", "operator": "operator", "status": "status", "severity": "severity"
+      }
+    },
+    {
+      "type": "FailureMode",
+      "label": "故障模式",
+      "source_table": "failure_mode",
+      "label_expr": "mode_name",
+      "properties": ["id", "mode_name", "category", "severity_level", "detection_method"],
+      "property_mappings": {
+        "id": "id", "mode_name": "mode_name", "category": "category",
+        "severity_level": "severity_level", "detection_method": "detection_method"
+      }
+    },
+    {
+      "type": "SparePart",
+      "label": "备件",
+      "source_table": "spare_part",
+      "label_expr": "part_name",
+      "properties": ["id", "part_name", "part_no", "stock_qty", "min_stock", "unit_price"],
+      "property_mappings": {
+        "id": "id", "part_name": "part_name", "part_no": "part_no",
+        "stock_qty": "stock_qty", "min_stock": "min_stock", "unit_price": "unit_price"
+      }
+    },
+    {
+      "type": "SupportResource",
+      "label": "保障资源",
+      "source_table": "support_resource",
+      "label_expr": "resource_name",
+      "properties": ["id", "resource_name", "resource_type", "quantity", "status"],
+      "property_mappings": {
+        "id": "id", "resource_name": "resource_name", "resource_type": "resource_type",
+        "quantity": "quantity", "status": "status"
+      }
+    }
+  ],
+  "relations": [
+    {
+      "source": "Equipment", "target": "Manufacturer", "label": "PRODUCED_BY",
+      "join": {"source_field": "manufacturer_id", "target_field": "id"}
+    },
+    {
+      "source": "Equipment", "target": "Location", "label": "LOCATED_IN",
+      "join": {"source_field": "location_id", "target_field": "id"}
+    },
+    {
+      "source": "Equipment", "target": "Supplier", "label": "SUPPLIED_BY",
+      "join": {"source_field": "supplier_id", "target_field": "id"}
+    },
+    {
+      "source": "ProcurementPlan", "target": "Equipment", "label": "PLANS_TO_BUY",
+      "join": {"source_field": "equipment_id", "target_field": "id"}
+    },
+    {
+      "source": "TenderProject", "target": "ProcurementPlan", "label": "BASED_ON",
+      "join": {"source_field": "plan_id", "target_field": "id"}
+    },
+    {
+      "source": "PurchaseContract", "target": "Equipment", "label": "FOR_EQUIPMENT",
+      "join": {"source_field": "equipment_id", "target_field": "id"}
+    },
+    {
+      "source": "PurchaseContract", "target": "Supplier", "label": "SIGNED_WITH",
+      "join": {"source_field": "supplier_id", "target_field": "id"}
+    },
+    {
+      "source": "PurchaseContract", "target": "TenderProject", "label": "AWARDED_FROM",
+      "join": {"source_field": "tender_project_id", "target_field": "id"}
+    },
+    {
+      "source": "AcceptanceRecord", "target": "PurchaseContract", "label": "ACCEPTS",
+      "join": {"source_field": "contract_id", "target_field": "id"}
+    },
+    {
+      "source": "AcceptanceRecord", "target": "Equipment", "label": "FOR_EQUIPMENT",
+      "join": {"source_field": "equipment_id", "target_field": "id"}
+    },
+    {
+      "source": "TestProject", "target": "Equipment", "label": "TESTS",
+      "join": {"source_field": "equipment_id", "target_field": "id"}
+    },
+    {
+      "source": "TestPlan", "target": "TestProject", "label": "BELONGS_TO",
+      "join": {"source_field": "project_id", "target_field": "id"}
+    },
+    {
+      "source": "TestData", "target": "TestProject", "label": "GENERATED_BY",
+      "join": {"source_field": "project_id", "target_field": "id"}
+    },
+    {
+      "source": "AppraisalConclusion", "target": "TestProject", "label": "CONCLUDES",
+      "join": {"source_field": "project_id", "target_field": "id"}
+    },
+    {
+      "source": "MaintenancePlan", "target": "Equipment", "label": "MAINTAINS",
+      "join": {"source_field": "equipment_id", "target_field": "id"}
+    },
+    {
+      "source": "MaintenanceOrder", "target": "Equipment", "label": "REPAIRS",
+      "join": {"source_field": "equipment_id", "target_field": "id"}
+    },
+    {
+      "source": "MaintenanceOrder", "target": "MaintenancePlan", "label": "EXECUTES",
+      "join": {"source_field": "plan_id", "target_field": "id"}
+    },
+    {
+      "source": "MaintenanceOrder", "target": "FailureMode", "label": "CAUSED_BY",
+      "join": {"source_field": "failure_mode_id", "target_field": "id"}
+    },
+    {
+      "source": "MaintenanceOrder", "target": "SparePart", "label": "USES_SPARE",
+      "join_type": "indirect", "through": "spare_usage", "through_join": {"source_field": "order_id", "target_field": "spare_part_id"}
+    },
+    {
+      "source": "Equipment", "target": "FailureMode", "label": "HAS_FAILURE_MODE",
+      "join_type": "indirect", "through": "equipment_failure_mode", "through_join": {"source_field": "equipment_id", "target_field": "failure_mode_id"}
+    },
+    {
+      "source": "SupportResource", "target": "Equipment", "label": "SUPPORTS",
+      "join_type": "indirect", "through": "equipment_support", "through_join": {"source_field": "resource_id", "target_field": "equipment_id"}
+    },
+    {
+      "source": "Location", "target": "Location", "label": "CONTAINS",
+      "join": {"source_field": "parent_id", "target_field": "id", "skip_null": true}
+    }
+  ],
+  "rules": [
+    {
+      "id": "R001",
+      "name": "设备高风险规则",
+      "description": "设备状态异常且重要等级为关键时，风险等级为高",
+      "entity_type": "Equipment",
+      "condition": "status == '异常' and importance_level == '关键'",
+      "action": {"risk_level": "高", "reason": "关键设备状态异常"}
+    },
+    {
+      "id": "R002",
+      "name": "供应商风险传导规则",
+      "description": "高风险供应商供应的设备风险等级提升",
+      "entity_type": "Equipment",
+      "condition": "SUPPLIED_BY.risk_level == '高'",
+      "action": {"risk_level": "高", "reason": "供应商风险高"}
+    },
+    {
+      "id": "R003",
+      "name": "维修频次过高规则",
+      "description": "维修次数>=3次的设备风险等级为中",
+      "entity_type": "Equipment",
+      "condition": "count(HAS_MAINTENANCE) >= 3",
+      "action": {"risk_level": "中", "reason": "维修频次过高"}
+    },
+    {
+      "id": "R004",
+      "name": "试验未通过规则",
+      "description": "试验数据未通过的设备需要关注",
+      "entity_type": "Equipment",
+      "condition": "TESTS.TEST_DATA.pass_flag == false",
+      "action": {"risk_level": "中", "reason": "存在未通过的试验项目"}
+    },
+    {
+      "id": "R005",
+      "name": "备件库存不足规则",
+      "description": "备件库存低于最小库存时预警",
+      "entity_type": "SparePart",
+      "condition": "stock_qty < min_stock",
+      "action": {"alert": true, "reason": "备件库存不足"}
+    },
+    {
+      "id": "R006",
+      "name": "设备超期未维修规则",
+      "description": "计划维修日期已过但未完成的工单预警",
+      "entity_type": "MaintenanceOrder",
+      "condition": "status != '已完成' and planned_date < today()",
+      "action": {"alert": true, "reason": "维修工单超期"}
+    }
+  ]
+}
